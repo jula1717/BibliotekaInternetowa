@@ -8,5 +8,9 @@
 </head>
 <body>
     Strona główna
+    <?php
+     $test = new Database;
+     
+     ?>
 </body>
 </html>

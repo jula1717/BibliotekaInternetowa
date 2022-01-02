@@ -1,6 +1,4 @@
 <?php
-//połączenie php z posgresql 
-// a na razie jest php z mysql
     class Database{
         private $dbHost = DB_HOST;
         private $dbUser = DB_USER;
@@ -13,7 +11,7 @@
 
         public function __construct()
         {
-            $conn = 'mysql:host='.$this->dbHost.';dbname='.$this->dbName;
+            $conn = 'pgsql:host='.$this->dbHost.';dbname='.$this->dbName;
             $options = array(
                 PDO::ATTR_PERSISTENT => true,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
@@ -24,6 +22,7 @@
                 $this->error = $e->getMessage();
                 echo $this->error;
             }
+           
         }
 
         public function query($sql){
