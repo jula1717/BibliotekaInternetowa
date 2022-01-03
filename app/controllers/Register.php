@@ -15,8 +15,7 @@ class Register extends Controller {
                 if ($result==null){
                     $this->userModel->createUser();
                     unset($_SESSION['errorTakenRegister']);
-                    echo "Dodano uzytkownika";
-                   // header("Location: ".URLROOT."/login");
+                    header("Location: ".URLROOT."/login");
                     exit();
                 }else{
                     $_SESSION['errorTakenRegister']="W bazie danych istnieje już użytkownik o tym samym adresie e-mail";
