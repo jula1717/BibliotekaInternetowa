@@ -10,10 +10,8 @@
     if (isset($_SESSION['errorEmptyRegister']))echo $_SESSION['errorEmptyRegister'];
     if (isset($_SESSION['errorTakenRegister']))echo $_SESSION['errorTakenRegister'];
     ?>
-    <div class="seperator"></div>
     Jeśli masz już założone konto<br>
-    <!-- <a href="<?php echo URLROOT."/login"?>">kliknij tutaj</a> -->
-    </div>
+    <a href="<?php echo URLROOT."/login"?>">kliknij tutaj</a>
     
     
 </body>

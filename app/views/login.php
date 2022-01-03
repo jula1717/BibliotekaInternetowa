@@ -8,13 +8,12 @@
         <input type="password" <?php if(isset($_SESSION['errorEmptyLogin'])||isset($_SESSION['errorBadAuthorize']))echo "class='error'";?> id="password" name="password" placeholder="Hasło"><br>
         <input type="submit" value="Zaloguj">
     </form>
+   
     <?php
     if (isset($_SESSION['errorEmptyLogin']))echo $_SESSION['errorEmptyLogin'];
     if (isset($_SESSION['errorBadAuthorize']))echo $_SESSION['errorBadAuthorize'];
     ?>
-    <div class="seperator"></div>
+     <br>
     Jeśli nie masz jeszcze założonego konta<br>
     <a href="<?php echo URLROOT."/register"?>">kliknij tutaj</a>
-    
-    </div>
-    </div>
+  
