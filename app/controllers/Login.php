@@ -16,14 +16,14 @@ class Login extends Controller {
     }
     public function tryToLogin(){
         if (!isset($_POST['email']) or !isset($_POST['password'])){
-            $_SESSION['errorEmptyLogin']="Uzupelnij wszystkie dane!";
+            $_SESSION['errorIncompleteLoginData']="Uzupelnij wszystkie dane!";
         }else{
-            unset($_SESSION['errorEmptyLogin']);
+            unset($_SESSION['errorIncompleteLoginData']);
             $result = $this->userModel->getUserByEmail($_POST['email']);
             if ($result== null || !password_verify($_POST['password'], $result->haslo)){
-                $_SESSION['errorBadAuthorize']="Podane dane nie zgadzają się!";
+                $_SESSION['errorInvalidPassword']="Podane dane nie zgadzają się!";
             }else{
-                unset($_SESSION['errorBadAuthorize']);
+                unset($_SESSION['errorInvalidPassword']);
                 $_SESSION['userData']=$result;
                 header("Location: ".URLROOT);
                 exit();
