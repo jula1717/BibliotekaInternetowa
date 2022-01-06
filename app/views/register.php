@@ -5,8 +5,8 @@
         <input type="email" <?php if(isset($_SESSION['errorIncompleteRegisterData'])||isset($_SESSION['errorDataAlreadyExists']))echo "class='error'";?> id="email" name="email" placeholder="E-mail" required><br>
         <input type="password" <?php if(isset($_SESSION['errorIncompleteRegisterData'])||isset($_SESSION['errorDataAlreadyExists']))echo "class='error'";?> id="password" name="password" placeholder="Hasło" required><br>
         <input type="password" <?php if(isset($_SESSION['errorIncompleteRegisterData'])||isset($_SESSION['errorDataAlreadyExists']))echo "class='error'";?> id="confirmPassword" name="confirmPassword" placeholder="Powtórz hasło" required><br>
-        <input type="text" <?php if(isset($_SESSION['errorIncompleteRegisterData'])||isset($_SESSION['errorDataAlreadyExists']))echo "class='error'";?> id="phone" name="phone" placeholder="Telefon" required><br>
-        <input type="submit" value="Zarejestruj">
+        <input type="tel" <?php if(isset($_SESSION['errorIncompleteRegisterData'])||isset($_SESSION['errorDataAlreadyExists']))echo "class='error'";?> id="phone" name="phone" pattern="[0-9]{9}" placeholder="Telefon" required><br>
+        <input type="submit" value="Zarejestruj" id="submit">
     </form>
     <?php
     if (isset($_SESSION['errorIncompleteRegisterData']))echo $_SESSION['errorIncompleteRegisterData'];
