@@ -1,0 +1,87 @@
+body
+{
+    background-image: url('../assets/images/bananas.png');
+}
+.logreg
+{
+    background-color: #F5E665;
+    width: 170px;
+    padding: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    box-shadow: 10px 10px 15px 2px rgba(53, 50, 28, 0.74);
+}
+
+/* input
+{
+    width: 170px;
+    background-color: #bfe8e3 !important;
+    color: #269ca3 !important;
+    font-size: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border: 2px solid #a5ded7 !important;
+} */
+
+
+/* #email
+{
+    width: 170px;
+    background-color: #bfe8e3 !important;
+    color: #269ca3 !important;
+    font-size: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border: 2px solid #a5ded7 !important;
+} */
+
+/* input#email
+{
+    width: 170px;
+    background-color: #bfe8e3 !important;
+    color: #269ca3 !important;
+    font-size: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border: 2px solid #a5ded7 !important;
+} */
+
+/* input[type="email" i]
+{
+    width: 170px;
+    background-color: #bfe8e3 !important;
+    color: #269ca3 !important;
+    font-size: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border: 2px solid #a5ded7 !important;
+} */
+
+/* input[type=email]
+{
+    width: 170px;
+    background-color: #bfe8e3 !important;
+    color: #269ca3 !important;
+    font-size: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border: 2px solid #a5ded7 !important;
+} */
+a:link
+{
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+}
+a:visited
+{
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
