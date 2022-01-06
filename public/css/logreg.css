@@ -1,5 +1,8 @@
+@import "../fonts.css";
 body
 {
+    /* font-family: Open Sans; */
+    font-family: Licorice;
     background-image: url('../assets/images/bananas.png');
 }
 .logreg
@@ -13,66 +16,33 @@ body
     box-shadow: 10px 10px 15px 2px rgba(53, 50, 28, 0.74);
 }
 
-/* input
+input
+{
+        width: 170px;
+        background-color: #bfe8e3 !important;
+        color: #269ca3 !important;
+        font-size: 15px;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-top: 5px;
+        border: 2px solid #a5ded7 !important;
+}
+
+#submit
 {
     width: 170px;
-    background-color: #bfe8e3 !important;
-    color: #269ca3 !important;
-    font-size: 15px;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-top: 5px;
-    border: 2px solid #a5ded7 !important;
-} */
+    background-color: #84dbd1;
+    font-size: 20px;
+    color: white;
+    padding: 15px 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
 
 
-/* #email
-{
-    width: 170px;
-    background-color: #bfe8e3 !important;
-    color: #269ca3 !important;
-    font-size: 15px;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-top: 5px;
-    border: 2px solid #a5ded7 !important;
-} */
-
-/* input#email
-{
-    width: 170px;
-    background-color: #bfe8e3 !important;
-    color: #269ca3 !important;
-    font-size: 15px;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-top: 5px;
-    border: 2px solid #a5ded7 !important;
-} */
-
-/* input[type="email" i]
-{
-    width: 170px;
-    background-color: #bfe8e3 !important;
-    color: #269ca3 !important;
-    font-size: 15px;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-top: 5px;
-    border: 2px solid #a5ded7 !important;
-} */
-
-/* input[type=email]
-{
-    width: 170px;
-    background-color: #bfe8e3 !important;
-    color: #269ca3 !important;
-    font-size: 15px;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-top: 5px;
-    border: 2px solid #a5ded7 !important;
-} */
 a:link
 {
         color: white;
