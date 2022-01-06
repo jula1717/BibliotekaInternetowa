@@ -1,7 +1,23 @@
 @font-face {
-    font-family: 'Open Sans', sans-serif;
-    src: url("../assets/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf") format("truetype");
+    font-family: "Open Sans";
+    src: url("../assets/fonts/OpenSans-VariableFont_wdth,wght.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
+
+
+@font-face {
+    font-family: "Licorice";
+    src: url("../assets/fonts/Licorice-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lobster";
+    src: url("../assets/fonts/Lobster-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 
