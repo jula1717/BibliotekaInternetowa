@@ -1,0 +1,65 @@
+@import "./fonts.css";
+
+body
+{
+    background-image: url('../assets/images/watercolor.png');
+    font-family: Open Sans;
+	font-size:20px;
+}
+#container
+{
+	margin-top: 100px;
+	width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+} 
+
+.tile
+{
+	margin: 10px;
+    display: flex;
+    width: 200px;
+    height: 180px;
+    text-align: center;
+    float: left;
+    flex-direction: column;
+    justify-content: center;
+	box-shadow: 2px 2px 5px 2px rgba(53, 50, 28, 0.74)
+}
+
+#readers
+{
+	background-color: #dda0c5;
+}
+#readers:hover
+{
+	background-color:#eeb1d6;
+}
+#borrows
+{
+	background-color: #fcd6da;
+}
+#borrows:hover
+{
+	background-color:#fde7eb;
+}
+#books
+{
+	background-color: #e75897;
+}
+#books:hover
+{
+	background-color:#f869a8;
+}
+#settings
+{
+	background-color: #e71473;
+}
+
+#settings:hover
+{
+	background-color:#f82584;
+}
+ 
+

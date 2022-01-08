@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?php echo URLROOT;?>/css/logreg.css" /></head>
-<?php //todo
+<?php 
             if (isset($_GET['registerSuccessful'])) 
-            echo 'Rejestracja przebiegła pomyślnie!<br>'
+            echo 'Proces rejestracji zakończony pomyślnie!<br>'
 ?>
 <div class ="logreg">
     <form action="<?php echo URLROOT."/login/tryToLogin"?>" method="post">
