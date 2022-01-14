@@ -25,14 +25,14 @@ class Publishers extends Controller {
     {
         if (!isset($_POST['publisher'])) $_SESSION['errorEmptyField'] = "Uzupełnij dane!";
         else {
-            if (strlen($_POST['publisher']) < 3 || strlen($_POST['publisher']) > 255) {
+            if (strlen($_POST['publisher']) < 1 || strlen($_POST['publisher']) > 255) {
                 $_SESSION['errorInvalidData'] = "Proszę podać nazwę wydawnictwa o prawidłowym rozmiarze (1-255 znaków)";
             } else {
                 if($tryb=="edycja")
                 {
                     if ($_POST['publisher']==$staraNazwa){  
                         $_SESSION['errorSamePublisher'] = "Nie dokonano żadnej zmiany";
-                        header("Location: " . URLROOT . "/publisher/editPublisher?nazwa=".$staraNazwa);
+                        header("Location: " . URLROOT . "/publishers/editPublisher?nazwa=".$staraNazwa);
                         exit();
                     }
                     else
@@ -63,7 +63,7 @@ class Publishers extends Controller {
 
     public function deletePublisher ($id_wydawnictwa)
     {
-        $result = $this->BookModel->getBookByCategoryId($id_wydawnictwa);
+        $result = $this->BookModel->getBookByPublisherId($id_wydawnictwa);
         if($result == false)
         {
             $this->BookModel->deletePublisher($id_wydawnictwa);
