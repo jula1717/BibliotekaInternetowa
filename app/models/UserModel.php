@@ -12,7 +12,15 @@
             $result=$this->db->single();
             return $result;
         }
-        public function createUser(){
+
+        public function getAllReaders(){
+            $query='SELECT * FROM "Uzytkownicy" WHERE typ_konta=\'czytelnik\'';
+            $this->db->query($query);
+            $result=$this->db->resultSet();
+            return $result;
+        }
+
+        public function createReader(){
             $query='INSERT INTO "Uzytkownicy" (email, haslo, telefon,typ_konta)
             VALUES (:email, :password, :phone, :typ_konta);';
             $this->db->query($query);
