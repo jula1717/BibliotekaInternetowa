@@ -69,6 +69,6 @@
 .icon-left-open:before { content: '\e80b'; font-size:48px; margin-top:10px;color:white; } /* '' */
 .icon-user-plus:before { content: '\f234'; font-size:48px; margin-top:10px;color:white; } /* '' */
 .icon-user-times:before { content: '\f235'; font-size:48px; margin-top:10px;color:white; } /* '' */
-.icon-cog:before { content: '\e80c'; font-size:12px; margin-top:10px;color:#f30c59; } /* '' */
-.icon-plus:before { content: '\e80d'; font-size:12px; margin-top:10px;color:#f30c59; } /* '' */
-.icon-trash-1:before { content: '\e83d'; font-size:12px; margin-top:10px;color:#f30c59; } /* '' */
+.icon-cog:before { content: '\e80c'; font-size:12px; margin-top:10px; margin-bottom:10px; color:#f30c59; } /* '' */
+.icon-plus:before { content: '\e80d'; font-size:12px; margin-top:10px; margin-bottom:10px; color:#f30c59; } /* '' */
+.icon-trash-1:before { content: '\e83d'; font-size:12px; margin-top:10px; margin-bottom:10px; color:#f30c59; } /* '' */
