@@ -6,6 +6,8 @@ body
     font-family: Open Sans;
 	font-size:20px;
 }
+
+
 #container
 {
 	margin-top: 100px;
@@ -14,6 +16,61 @@ body
     margin-right: auto;
     background-color: white;
 } 
+
+#borrowsTable
+{
+    margin-top: 100px;
+	width: 770px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+#formContainer 
+{
+    background-color: #fbd1d5;
+    width: 170px;
+    padding: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 130px;
+    box-shadow: 10px 10px 15px 2px rgb(53 50 28 / 74%);
+}
+
+#category
+{
+    font-family: open sans;
+    font-style: normal;
+    width: 170px;
+    background-color: #f5bfc4;
+    text-align: center;
+    color: #d14e81;
+    font-size: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border: 2px solid #f590b7;
+    outline: none;
+}
+
+#submit
+{
+    width: 170px;
+    background-color: #d14e81;
+    font-size: 20px;
+    color: #ffffff;
+    padding: 15px 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    letter-spacing: 2px
+}
+
+#submit:hover
+{
+    background-color: #e25f92 !important ;
+}
 
 .tile
 {
@@ -30,19 +87,19 @@ body
 
 #readers
 {
-	background-color: #dda0c5;
+    background-color: #dda0c5;
 }
 #readers:hover
 {
-	background-color:#eeb1d6;
+    background-color:#eeb1d6;
 }
-#borrows
+#logout
 {
 	background-color: #fcd6da;
 }
-#borrows:hover
+#logout:hover
 {
-	background-color:#fde7eb;
+    background-color:#fde7eb;
 }
 #books
 {
@@ -50,16 +107,46 @@ body
 }
 #books:hover
 {
-	background-color:#f869a8;
+    background-color:#f869a8;
 }
 #settings
 {
-	background-color: #e71473;
+    background-color: #e71473;
 }
 
 #settings:hover
 {
-	background-color:#f82584;
+    background-color:#f82584;
 }
- 
+a:-webkit-any-link {
+    color: unset;
+    cursor: pointer;
+    text-decoration: none;
+}
 
+a#pinkHref
+{
+    color:#e91d86 ;
+}
+
+i.icon-plus
+{
+    color: #f30c59 !important;
+}
+
+table 
+{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td 
+{
+    border: 1px solid #f7c8e4;
+    text-align: center;
+}
+
+table th
+{
+    color: #e397bd;
+}
