@@ -23,11 +23,11 @@ class Login extends Controller
         } else {
             unset($_SESSION['errorIncompleteLoginData']);
             if (strlen($_POST['email']) < 6 || strlen($_POST['email']) > 255) {
-                $_SESSION['errorWrongEmailSize'] = "Proszę podać prawidłowy rozmiar adresu email (6-255 znaków)";
+                $_SESSION['errorWrongEmailSize'] = "Proszę podać adres email o prawidłowym rozmiarze (6-255 znaków)";
             } else {
                 unset($_SESSION['errorWrongEmailSize']);
                 if (strlen($_POST['password']) < 8 || strlen($_POST['email']) > 255) {
-                    $_SESSION['errorWrongPasswordSize'] = "Proszę podać prawidłowy rozmiar hasła (8-255 znaków)";
+                    $_SESSION['errorWrongPasswordSize'] = "Proszę podać adres email o prawidłowym rozmiarze (6-255 znaków)";
                 } else {
                     unset($_SESSION['errorWrongPasswordSize']);
                     $result = $this->userModel->getUserByEmail($_POST['email']);
@@ -36,8 +36,16 @@ class Login extends Controller
                     } else {
                         unset($_SESSION['errorInvalidPassword']);
                         $_SESSION['userData'] = $result;
-                        header("Location: " . URLROOT);
-                        exit();
+                        if($_SESSION['userData']->typ_konta=="pracownik"||$_SESSION['userData']->typ_konta=="administrator")
+                        {
+                            header("Location: " . URLROOT . "/workerProfile");
+                            exit();
+                        }
+                        else if ($_SESSION['userData']->typ_konta=="czytelnik")
+                        {
+                            echo "Zalogowano";
+                            exit();
+                        }
                     }
                 }
             }

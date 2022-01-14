@@ -12,21 +12,21 @@ class Register extends Controller {
             unset($_SESSION['errorIncompleteRegisterData']);
             if(strlen($_POST['email'])<6||strlen($_POST['email'])>255)
             {
-                $_SESSION['errorWrongEmailSize']="Proszę podać prawidłowy rozmiar adresu email (6-255 znaków)";
+                $_SESSION['errorWrongEmailSize']="Proszę podać adres email o prawidłowym rozmiarze (6-255 znaków)";
             }
             else
             {
                 unset($_SESSION['errorWrongEmailSize']);
                 if(strlen($_POST['password'])<8||strlen($_POST['password'])>255)
                 {
-                    $_SESSION['errorWrongPasswordSize']="Proszę podać prawidłowy rozmiar hasła (8-255 znaków)";
+                    $_SESSION['errorWrongPasswordSize']="Proszę podać hasło o prawidłowym rozmiarze (8-255 znaków)";
                 }
                 else
                 {
                     unset($_SESSION['errorWrongPasswordSize']);
                     if(strlen($_POST['confirmPassword'])<8||strlen($_POST['confirmPassword'])>255)
                     {
-                        $_SESSION['errorWrongConfirmPasswordSize']="Proszę podać prawidłowy rozmiar hasła (8-255 znaków)";
+                        $_SESSION['errorWrongConfirmPasswordSize']="Proszę podać hasło o prawidłowym rozmiarze (8-255 znaków)";
                     }
                     else
                     {
@@ -41,7 +41,7 @@ class Register extends Controller {
                         if ($_POST['password']==$_POST['confirmPassword']){
                             $result=$this->userModel->getUserByEmail($_POST['email']);
                             if ($result==null){
-                                $this->userModel->createUser();
+                                $this->userModel->createReader();
                                 unset($_SESSION['errorDataAlreadyExists']);
                                 header("Location: ".URLROOT."/login");
                                 exit();
