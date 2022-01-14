@@ -13,7 +13,7 @@
         Autorzy
     </a>
     <div style="clear: both;"></div>
-    <a class="tile" id="publishers" href="#">
+    <a class="tile" id="publishers" href="<?php echo URLROOT . "/publishers"?>">
         <i class="icon-print"></i>
         <br>
         Wydawnictwa

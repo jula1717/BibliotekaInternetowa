@@ -5,6 +5,20 @@
         {
             $this->db = new Database;
         }
+
+        public function createReader()
+        {
+            $query='INSERT INTO "Uzytkownicy" (email, haslo, telefon,typ_konta)
+            VALUES (:email, :password, :phone, :typ_konta);';
+            $this->db->query($query);
+            $this->db->bind(':email',$_POST['email']);
+            $hashedPassword=password_hash($_POST['password'],PASSWORD_DEFAULT);
+            $this->db->bind(':password',$hashedPassword);
+            $this->db->bind(':phone',$_POST['phone']);
+            $this->db->bind(':typ_konta','czytelnik');
+            $this->db->execute();
+        }
+
         public function getReaderBorrows($readerId){
            
             $query='SELECT "Wypozyczenia".id_wypozyczenia, "Czytelnicy".email AS "czyt_email", "Ksiazki".tytul, "Wypozyczenia".id_egzemplarza, 
@@ -35,6 +49,8 @@
             $this->db->execute();
         }
 
+        /* categories */
+
         public function getCategories()
         {
             $query='SELECT * FROM "Kategorie";';
@@ -43,6 +59,7 @@
             return $result;
         }
 
+        
         public function addCategory($nazwa)
         {
             $query='INSERT INTO "Kategorie" VALUES(DEFAULT,:nazwa)';
@@ -50,19 +67,8 @@
             $this->db->bind(':nazwa',$nazwa);
             $this->db->execute();
         }
-
-        public function createReader(){
-            $query='INSERT INTO "Uzytkownicy" (email, haslo, telefon,typ_konta)
-            VALUES (:email, :password, :phone, :typ_konta);';
-            $this->db->query($query);
-            $this->db->bind(':email',$_POST['email']);
-            $hashedPassword=password_hash($_POST['password'],PASSWORD_DEFAULT);
-            $this->db->bind(':password',$hashedPassword);
-            $this->db->bind(':phone',$_POST['phone']);
-            $this->db->bind(':typ_konta','czytelnik');
-            $this->db->execute();
-        }
-
+        
+        
         public function getCategoryByName($nazwa)
         {
             $query='SELECT nazwa FROM "Kategorie" WHERE nazwa =:nazwa;';
@@ -71,7 +77,7 @@
             $result=$this->db->single();
             return $result;
         }
-
+        
         public function editCategory($nowaNazwa, $staraNazwa)
         {
             $query='UPDATE "Kategorie" SET nazwa=:nowaNazwa WHERE nazwa =:staraNazwa';
@@ -80,7 +86,7 @@
             $this->db->bind(':nowaNazwa',$nowaNazwa);
             $this->db->execute();
         }
-
+        
         public function getBookByCategoryId($id_kategorii)
         {
             $query='SELECT * FROM "Ksiazki" WHERE id_kategorii =:id_kategorii;';
@@ -89,7 +95,7 @@
             $result=$this->db->single();
             return $result;
         }
-
+        
         public function deleteCategory($id_kategorii)
         {
             $query='DELETE FROM "Kategorie" WHERE id_kategorii =:id_kategorii;';
@@ -98,5 +104,58 @@
             $this->db->execute();
         }
 
+        /* publishers */
+        
+        public function getPublishers()
+        {
+            $query='SELECT * FROM "Wydawnictwa";';
+            $this->db->query($query);
+            $result=$this->db->resultSet();
+            return $result;
+        }
+
+        public function addPublisher($nazwa)
+        {
+            $query='INSERT INTO "Wydawnictwa" VALUES(DEFAULT,:nazwa)';
+            $this->db->query($query);
+            $this->db->bind(':nazwa',$nazwa);
+            $this->db->execute();
+        }
+        
+        
+        public function getPublisherByName($nazwa)
+        {
+            $query='SELECT nazwa FROM "Wydawnictwa" WHERE nazwa =:nazwa;';
+            $this->db->query($query);
+            $this->db->bind(':nazwa',$nazwa);
+            $result=$this->db->single();
+            return $result;
+        }
+
+        public function editPublisher($nowaNazwa, $staraNazwa)
+        {
+            $query='UPDATE "Wydawnictwa" SET nazwa=:nowaNazwa WHERE nazwa =:staraNazwa';
+            $this->db->query($query);
+            $this->db->bind(':staraNazwa',$staraNazwa);
+            $this->db->bind(':nowaNazwa',$nowaNazwa);
+            $this->db->execute();
+        }
+        
+        public function getBookByPublisherId($id_wydawnictwa)
+        {
+            $query='SELECT * FROM "Ksiazki" WHERE id_wydawnictwa =:id_wydawnictwa;';
+            $this->db->query($query);
+            $this->db->bind(':id_wydawnictwa',$id_wydawnictwa);
+            $result=$this->db->single();
+            return $result;
+        }
+
+        public function deletePublisher($id_wydawnictwa)
+        {
+            $query='DELETE FROM "Wydawnictwa" WHERE id_wydawnictwa =:id_wydawnictwa;';
+            $this->db->query($query);
+            $this->db->bind(':id_wydawnictwa',$id_wydawnictwa);
+            $this->db->execute();
+        }
     }
 ?>

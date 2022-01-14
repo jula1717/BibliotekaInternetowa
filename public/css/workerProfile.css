@@ -37,7 +37,8 @@ body
     box-shadow: 10px 10px 15px 2px rgb(53 50 28 / 74%);
 }
 
-#category
+#category,
+#publisher
 {
     font-family: open sans;
     font-style: normal;
