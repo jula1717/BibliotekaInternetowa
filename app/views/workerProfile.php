@@ -1,29 +1,30 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=2" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=2" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=1" />
 </head>
 <div id="container">
-    <div class="tile" id="readers">
+    <a class="tile" id="readers" href="<?php echo URLROOT."/readers"?>">
         <i class="icon-user"></i>
         <br>
         Czytelnicy
-    </div>
-    <div class="tile" id="borrows">
-        <i class="icon-list"></i>
+    </a>
+    <a class="tile" id="logout" href="<?php echo URLROOT."/workerProfile/logout"?>">
+        <i class="icon-logout"></i>
         <br>
-        Wypożyczenia
-    </div>
+        Wyloguj
+    </a>
     <div style="clear: both;"></div>
-    <div class="tile" id="books">
+    <a class="tile" id="books" href="#">
         <i class="icon-book"></i>
         <br>
         Książki
-    </div>
-    <div class="tile" id="settings">
+    </a>
+    <a class="tile" id="settings" href="<?php echo URLROOT."/Configuration"?>">
         <i class="icon-cogs"></i>
         <br>
-        Kategorie<br>
-        Wydawnictwa<br>
-        Autorzy<br>
-    </div>
-    <div style="clear: both;"></div>
+        Kategorie Autorzy<br>
+        Wydawnictwa
+        <?php if($_SESSION['userData']->typ_konta=="administrator") echo "<br>Pracownicy"?>
+        
+</a>
+<div style="clear: both;"></div>
 </div>
