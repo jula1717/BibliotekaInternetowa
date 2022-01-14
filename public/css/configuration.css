@@ -1,0 +1,108 @@
+@import "./fonts.css";
+
+body
+{
+    background-image: url('../assets/images/watercolor.png');
+    font-family: Open Sans;
+	font-size:20px;
+}
+#container
+{
+	margin-top: 100px;
+	width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+} 
+
+
+
+#borrowsTable
+{
+    margin-top: 100px;
+	width: 770px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a:-webkit-any-link {
+    color: unset;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a#pinkHref
+{
+    color:#e91d86 ;
+}
+ 
+table 
+{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td 
+{
+    border: 1px solid #f7c8e4;
+    text-align: center;
+}
+
+table th
+{
+    color: #e397bd;
+}
+
+
+
+/*kafelki*/
+
+.tile
+{
+	margin: 10px;
+    display: flex;
+    width: 200px;
+    height: 180px;
+    text-align: center;
+    float: left;
+    flex-direction: column;
+    justify-content: center;
+	box-shadow: 2px 2px 5px 2px rgba(53, 50, 28, 0.74)
+}
+
+#categories
+{
+	background-color: #dda0c5;
+}
+#categories:hover
+{
+	background-color:#eeb1d6;
+}
+#authors
+{
+	background-color: #fcd6da;
+}
+#authors:hover
+{
+	background-color:#fde7eb;
+}
+#publishers
+{
+	background-color: #e75897;
+}
+#publishers:hover
+{
+	background-color:#f869a8;
+}
+#workers
+{
+	background-color: #e71473;
+}
+
+#workers:hover
+{
+	background-color:#f82584;
+}
+
+
+
+
