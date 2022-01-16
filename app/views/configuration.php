@@ -7,7 +7,7 @@
         <br>
         Kategorie
     </a>
-    <a class="tile" id="authors" href="#">
+    <a class="tile" id="authors" href="<?php echo URLROOT . "/authors"?>">
         <i class="icon-vector-pencil"></i>
         <br>
         Autorzy

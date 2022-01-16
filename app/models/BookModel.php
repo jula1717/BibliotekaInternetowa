@@ -157,5 +157,51 @@
             $this->db->bind(':id_wydawnictwa',$id_wydawnictwa);
             $this->db->execute();
         }
+
+        /* authors */
+        
+        public function getAuthors()
+        {
+            $query='SELECT * FROM "Autorzy";';
+            $this->db->query($query);
+            $result=$this->db->resultSet();
+            return $result;
+        }
+
+        public function addAuthor($imie,$nazwisko)
+        {
+            $query='INSERT INTO "Autorzy" VALUES(DEFAULT,:imie,:nazwisko)';
+            $this->db->query($query);
+            $this->db->bind(':imie',$imie);
+            $this->db->bind(':nazwisko',$nazwisko);
+            $this->db->execute();
+        }
+        
+        public function editAuthor($noweImie,$noweNazwisko,$id_autora)
+        {
+            $query='UPDATE "Autorzy" SET imie=:noweImie, nazwisko=:noweNazwisko WHERE id_autora=:id_autora';
+            $this->db->query($query);
+            $this->db->bind(':noweImie',$noweImie);
+            $this->db->bind(':noweNazwisko',$noweNazwisko);
+            $this->db->bind(':id_autora',$id_autora);
+            $this->db->execute();
+        }
+        
+        public function getAuthorRelationByAuthorId($id_autora)
+        {
+            $query='SELECT * FROM "Autorzy_ksiazek" WHERE id_autora =:id_autora;';
+            $this->db->query($query);
+            $this->db->bind(':id_autora',$id_autora);
+            $result=$this->db->single();
+            return $result;
+        }
+
+        public function deleteAuthor($id_autora)
+        {
+            $query='DELETE FROM "Autorzy" WHERE id_autora =:id_autora;';
+            $this->db->query($query);
+            $this->db->bind(':id_autora',$id_autora);
+            $this->db->execute();
+        }
     }
 ?>

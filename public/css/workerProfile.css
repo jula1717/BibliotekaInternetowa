@@ -38,7 +38,9 @@ body
 }
 
 #category,
-#publisher
+#publisher,
+#authorFirstname,
+#authorLastname
 {
     font-family: open sans;
     font-style: normal;

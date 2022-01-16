@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=4" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=3" />
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=2" />
 
 
@@ -12,7 +12,7 @@
     echo $_SESSION['errorDelete']."<br>";
     unset($_SESSION['errorDelete']);
 } ?>
-    <a href="<?php echo URLROOT . "/publishers/addPublisher" ?>">
+    <a href="<?php echo URLROOT . "/Authors/addAuthor" ?>">
         <i class="icon-plus"></i>
         Dodaj
     </a>
@@ -20,29 +20,31 @@
     
 
 
-    <?php if (count($publishers) > 0) {
+    <?php if (count($authors) > 0) {
     ?>
         <table>
             <thead>
                 <th>lp.</th>
-                <th>nazwa wydawnictwa</th>
+                <th>imię</th>
+                <th>nazwisko</th>
                 <th>edycja</th>
                 <th>usuwanie</th>
             </thead>
             <tbody>
                 <?php
-                foreach ($publishers as $index => $publisher) {
+                foreach ($authors as $index => $author) {
                 ?>
                     <tr>
                         <td><?php echo $index + 1; ?></td>
-                        <td><?php echo $publisher->nazwa; ?></td>
+                        <td><?php echo $author->imie; ?></td>
+                        <td><?php echo $author->nazwisko; ?></td>
                         <td>
-                            <a title="edytuj" href="<?php echo URLROOT . "/publishers/editPublisher?nazwa=" . $publisher->nazwa ?>">
+                            <a title="edytuj" href="<?php echo URLROOT . "/authors/editAuthor?imie=" . $author->imie ."&nazwisko=" . $author->nazwisko . "&id_autora=" . $author->id_autora ?>">
                                 <i class="icon-cog"></i>
                             </a>
                         </td>
                         <td>
-                            <a title="usuń" href="<?php echo URLROOT . "/publishers/deletePublisher/" . $publisher->id_wydawnictwa ?>">
+                            <a title="usuń" href="<?php echo URLROOT . "/authors/deleteAuthor/" . $author->id_autora ?>">
                                 <i class="icon-trash-1"></i>
                             </a>
                         </td>
@@ -55,7 +57,7 @@
     <?php
     } else {
     ?>
-        <p>Nie znaleziono wydawnictw</p>
+        <p>Nie znaleziono autorów</p>
     <?php
     }
     ?>
