@@ -14,7 +14,6 @@ body
 	width: 440px;
     margin-left: auto;
     margin-right: auto;
-    background-color: white;
 } 
 
 #borrowsTable
@@ -75,6 +74,9 @@ body
     background-color: #e25f92 !important ;
 }
 
+
+/*kafelki*/
+
 .tile
 {
 	margin: 10px;
@@ -86,6 +88,41 @@ body
     flex-direction: column;
     justify-content: center;
 	box-shadow: 2px 2px 5px 2px rgba(53, 50, 28, 0.74)
+}
+
+
+#categories
+{
+	background-color: #dda0c5;
+}
+#categories:hover
+{
+	background-color:#eeb1d6;
+}
+#authors
+{
+	background-color: #fcd6da;
+}
+#authors:hover
+{
+	background-color:#fde7eb;
+}
+#publishers
+{
+	background-color: #e75897;
+}
+#publishers:hover
+{
+	background-color:#f869a8;
+}
+#workers
+{
+	background-color: #e71473;
+}
+
+#workers:hover
+{
+	background-color:#f82584;
 }
 
 #readers
@@ -141,6 +178,7 @@ table
 {
     width: 100%;
     border-collapse: collapse;
+    background-color: white;
 }
 
 table th, table td 
@@ -152,4 +190,16 @@ table th, table td
 table th
 {
     color: #e397bd;
+}
+
+.return
+{
+    font-family: Lobster;
+    color: #e54f9a;
+    font-size: 30px;
+    background-color: #f9d7ec80;
+    width: 160px;
+    border-radius: 10px;
+    border: solid 0.5px;
+    padding-bottom: 10px;
 }
