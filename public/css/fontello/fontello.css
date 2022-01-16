@@ -66,7 +66,7 @@
 .icon-person:before { content: '\e808'; font-size:48px; margin-top:10px;color:white; } /* '' */
 .icon-users:before { content: '\e809'; font-size:48px; margin-top:10px;color:white; } /* '' */
 .icon-left-big:before { content: '\e80a'; font-size:48px; margin-top:10px;color:white; } /* '' */
-.icon-left-open:before { content: '\e80b'; font-size:48px; margin-top:10px;color:white; } /* '' */
+.icon-left-open:before { content: '\e80b'; font-size:34px; margin-top:10px;color:#e54f9a; } /* '' */
 .icon-user-plus:before { content: '\f234'; font-size:48px; margin-top:10px;color:white; } /* '' */
 .icon-user-times:before { content: '\f235'; font-size:48px; margin-top:10px;color:white; } /* '' */
 .icon-cog:before { content: '\e80c'; font-size:12px; margin-top:10px; margin-bottom:10px; color:#f30c59; } /* '' */

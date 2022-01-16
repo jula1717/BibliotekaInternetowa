@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=3" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=2" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=7" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=7" />
 
 
 </head>
-
+<?php include ('returns/returnConfiguration.php'); ?>
 <div id="container">
 
 

@@ -1,6 +1,7 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/configuration.css?v=1" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=7" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=7" />
 </head>
+<?php include ('returns/returnWorkerProfile.php'); ?>
 <div id="container">
     <a class="tile" id="categories" href="<?php echo URLROOT . "/categories"?>">
         <i class="icon-list"></i>

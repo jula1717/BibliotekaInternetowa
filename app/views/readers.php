@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=1" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=7" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=7" />
 
 
 </head>
-
+<?php include ('returns/returnWorkerProfile.php'); ?>
 <div id="container">
 
 <?php if(count($readers)>0){
