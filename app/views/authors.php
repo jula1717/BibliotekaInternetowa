@@ -1,23 +1,24 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=7" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=7" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=10" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=10" />
 
 
 </head>
-<?php include ('returns/returnConfiguration.php'); ?>
+
+<?php include('returns/returnConfiguration.php'); ?>
+<a class="button right" href="<?php echo URLROOT . "/Authors/addAuthor" ?>">
+    <i class="icon-plus"></i>
+    Dodaj
+</a>
 <div id="container">
 
 
-<?php if (isset($_SESSION['errorDelete']))
-{
-    echo $_SESSION['errorDelete']."<br>";
-    unset($_SESSION['errorDelete']);
-} ?>
-    <a href="<?php echo URLROOT . "/Authors/addAuthor" ?>">
-        <i class="icon-plus"></i>
-        Dodaj
-    </a>
+    <?php if (isset($_SESSION['errorDelete'])) {
+        echo $_SESSION['errorDelete'] . "<br>";
+        unset($_SESSION['errorDelete']);
+    } ?>
 
-    
+
+
 
 
     <?php if (count($authors) > 0) {
@@ -39,7 +40,7 @@
                         <td><?php echo $author->imie; ?></td>
                         <td><?php echo $author->nazwisko; ?></td>
                         <td>
-                            <a title="edytuj" href="<?php echo URLROOT . "/authors/editAuthor?imie=" . $author->imie ."&nazwisko=" . $author->nazwisko . "&id_autora=" . $author->id_autora ?>">
+                            <a title="edytuj" href="<?php echo URLROOT . "/authors/editAuthor?imie=" . $author->imie . "&nazwisko=" . $author->nazwisko . "&id_autora=" . $author->id_autora ?>">
                                 <i class="icon-cog"></i>
                             </a>
                         </td>

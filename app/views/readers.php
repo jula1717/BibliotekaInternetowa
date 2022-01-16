@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=7" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=7" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=10" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=10" />
 
 
 </head>

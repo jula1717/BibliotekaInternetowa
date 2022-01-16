@@ -1,6 +1,5 @@
-<div class="return">
-    <a href="<?php echo URLROOT . "/configuration" ?>">
+
+    <a href="<?php echo URLROOT . "/configuration" ?>" class="button">
         <i class="icon-left-open"></i>
         Powrót
     </a>
-</div>

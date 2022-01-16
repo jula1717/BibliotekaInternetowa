@@ -1,23 +1,23 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=7" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=7" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=10" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=10" />
 
 
 </head>
-<?php include ('returns/returnConfiguration.php'); ?>
+<?php include('returns/returnConfiguration.php'); ?>
+<a class="button right" href="<?php echo URLROOT . "/categories/addCategory" ?>">
+    <i class="icon-plus"></i>
+    Dodaj
+</a>
 <div id="container">
 
 
-<?php if (isset($_SESSION['errorDelete']))
-{
-    echo $_SESSION['errorDelete']."<br>";
-    unset($_SESSION['errorDelete']);
-} ?>
-    <a href="<?php echo URLROOT . "/categories/addCategory" ?>">
-        <i class="icon-plus"></i>
-        Dodaj
-    </a>
+    <?php if (isset($_SESSION['errorDelete'])) {
+        echo $_SESSION['errorDelete'] . "<br>";
+        unset($_SESSION['errorDelete']);
+    } ?>
 
-    
+
+
 
 
     <?php if (count($categories) > 0) {
