@@ -3,6 +3,7 @@
 class Publishers extends Controller {
     public function __construct()
     {
+        librarianAccessOnly();
         $this->BookModel = $this->model('BookModel');
     }
     public function index(){

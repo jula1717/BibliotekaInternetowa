@@ -58,6 +58,11 @@ class Register extends Controller {
     }
 }
     public function index(){
+        if(isset($_SESSION['userData']))
+        {
+            header("Location: ".URLROOT);
+            exit();
+        }
         $this->view('register');
     }
 }

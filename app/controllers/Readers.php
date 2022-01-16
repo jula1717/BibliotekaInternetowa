@@ -3,6 +3,7 @@
 class Readers extends Controller {
     public function __construct()
     {
+        librarianAccessOnly();
         $this->userModel = $this->model('UserModel');
         $this->BookModel = $this->model('BookModel');
     }

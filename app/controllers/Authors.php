@@ -3,14 +3,20 @@
 class Authors extends Controller {
     public function __construct()
     {
+        librarianAccessOnly();
         $this->BookModel = $this->model('BookModel');
     }
     public function index(){
+        
+        if(isset($_SESSION['userData']))
+        {
+            header("Location: ".URLROOT);
+            exit();
+        }
+
         $authors = $this->BookModel->getAuthors();
         $this->view('authors', compact('authors'));
     }
-
-//odtąd 
 
     public function addAuthor()
     {

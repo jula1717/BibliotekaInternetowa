@@ -3,7 +3,7 @@
 class Configuration extends Controller {
     public function __construct()
     {
-       
+        librarianAccessOnly();
     }
     public function index(){
         

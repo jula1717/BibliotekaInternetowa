@@ -8,12 +8,11 @@ class Login extends Controller
     }
     public function index()
     {
-        //todo: odkomentować jak będzie wylogowywanie na stronie głównej
-        // if(isset($_SESSION['userData']))
-        // {
-        //     header("Location: ".URLROOT);
-        //     exit();
-        // }
+        if(isset($_SESSION['userData']))
+        {
+            header("Location: ".URLROOT);
+            exit();
+        }
         $this->view('login');
     }
     public function tryToLogin()
@@ -43,7 +42,7 @@ class Login extends Controller
                         }
                         else if ($_SESSION['userData']->typ_konta=="czytelnik")
                         {
-                            echo "Zalogowano";
+                            header("Location: " . URLROOT . "/readerProfile");
                             exit();
                         }
                     }

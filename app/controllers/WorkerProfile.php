@@ -3,14 +3,9 @@
 class WorkerProfile extends Controller {
     public function __construct()
     {
-        if ($_SESSION['userData']->typ_konta!="administrator"&&$_SESSION['userData']->typ_konta!="pracownik")
-        {
-            header("Location: " . URLROOT . "/login" );
-            exit();
-        }
+        librarianAccessOnly();
     }
     public function index(){
-        
          $this->view('workerProfile');
     }
 
