@@ -8,7 +8,6 @@ class Index extends Controller {
     public function index(){
         loginAccessOnly();
         checkTypeAccount();
-         $this->view('index');
     }
 }
 ?>

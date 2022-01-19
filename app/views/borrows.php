@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=10" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=10" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css??v=0.0.1" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css??v=0.0.1" />
 </head>
-<?php include ('returns/returnReaders.php'); ?>
+<?php returnRedirect("readers");?>
 <div id="borrowsTable">
 <?php if(count($borrows)>0){
     ?>

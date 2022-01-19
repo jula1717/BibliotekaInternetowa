@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=10" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=10" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css??v=0.0.1" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css??v=0.0.1" />
 
 
 </head>
-<?php include ('returns/returnWorkerProfile.php'); ?>
+<?php returnRedirect("workerProfile");?>
 <div id="container">
 
 <?php if(count($readers)>0){
@@ -23,7 +23,7 @@
                     <td><?php echo $index+1; ?></td>
                     <td><?php echo '<a href='. URLROOT .'/readers/borrows/?readerId=' . $reader->id_uzytkownika . '>'. $reader->email . '</a>';?></td>
                     <td><?php echo $reader->telefon ?></td>
-                    <td><?php echo $reader->limit; ?></td>
+                    <td><?php echo $reader->limit_ksiazek; ?></td>
                 </tr>
             <?php
             }

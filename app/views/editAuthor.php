@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=2" />
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=4" />
 </head>
-
+<?php returnRedirect("authors");?>
 <div id ="formContainer">
 
     <form action="<?php echo URLROOT.'/authors/authorFormHandler/edycja/'. $imie . '/' . $nazwisko . '/'. $id_autora ?>" method="post">

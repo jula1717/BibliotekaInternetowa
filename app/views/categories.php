@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=10" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=10" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=0.0.1" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=0.0.1" />
 
 
 </head>
-<?php include('returns/returnConfiguration.php'); ?>
+<?php returnRedirect("configuration");?>
 <a class="button right" href="<?php echo URLROOT . "/categories/addCategory" ?>">
     <i class="icon-plus"></i>
     Dodaj

@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=10" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=10" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css??v=0.0.1" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css??v=0.0.1" />
 </head>
-<?php include ('returns/returnWorkerProfile.php'); ?>
+<?php returnRedirect("workerProfile");?>
 <div id="container">
     <a class="tile" id="categories" href="<?php echo URLROOT . "/categories"?>">
         <i class="icon-list"></i>
@@ -21,7 +21,7 @@
     </a>
     <?php
     if ($_SESSION['userData']->typ_konta == "administrator") {
-        echo '<a class="tile" id="workers" href="#">';
+        echo '<a class="tile" id="workers" href="'.URLROOT.'/workers">';
         echo '<i class="icon-person"></i><br>';
         echo "<br>Pracownicy</a>";
     }
