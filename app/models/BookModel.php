@@ -39,6 +39,15 @@
             return $result;
         }
 
+        public function prolongBook($borrowId)
+        {
+            $query='UPDATE "Wypozyczenia" SET prolongowane = :prolongowane WHERE id_wypozyczenia=:id_wypozyczenia;';
+            $this->db->query($query);
+            $this->db->bind(':id_wypozyczenia',$borrowId);
+            $this->db->bind(':prolongowane',true);
+            $this->db->execute();
+        }
+
         public function returnBook($borrowId)
         {
             $query='UPDATE "Wypozyczenia" SET data_oddania = :data_oddania,id_pracownika_odbior = :id_pracownika_odbior WHERE id_wypozyczenia=:id_wypozyczenia;';
