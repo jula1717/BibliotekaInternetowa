@@ -27,6 +27,27 @@ table th
     color: #e397bd;
 }
 
+#borrowsTable
+{
+    margin-top: 100px;
+	width: 770px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#workersTable
+{
+    margin-top: 100px;
+	width: 770px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#wide
+{
+    width:600px;
+}
+
 /*kafelki*/
     
 .tile
@@ -111,6 +132,36 @@ table th
     background-color:#f82584;
 }
 
+#catalog
+{
+    background-color: #e9707b;
+}
+
+#catalog:hover
+{
+    background-color: #fa818c;
+}
+
+#myborrows
+{
+    background-color: #cb1c3d;
+}
+
+#myborrows:hover
+{
+    background-color: #dc2d4e;
+}
+
+#mydata
+{
+    background-color: #e793bc;
+}
+
+#mydata:hover
+{
+    background-color: #f8a4cd;
+}
+
 /*form*/
 
 #formContainer 
@@ -122,8 +173,15 @@ table th
     margin-right: auto;
     margin-top: 130px;
     box-shadow: 10px 10px 15px 2px rgb(53 50 28 / 74%);
+    clear: both;
 }
 
+#formContainer.wfc
+{
+    margin-top: 90px;
+}
+
+#workerAdd,
 #category,
 #publisher,
 #authorFirstname,
@@ -186,15 +244,14 @@ a#pinkHref
     margin-right: auto;
 } 
 
-#borrowsTable
+#workersContainer
 {
-    margin-top: 100px;
+    clear:both;
+	margin-top: 100px;
 	width: 770px;
     margin-left: auto;
     margin-right: auto;
-    background-color: white;
 }
-
 
 
 
