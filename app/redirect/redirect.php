@@ -42,11 +42,12 @@ function checkTypeAccount()
     }
 }
 
-function returnRedirect($first=0,$second=0)
+function returnRedirect($first=0,$second=0,$third=0)
 {
-    if($first==0 && $second==0) echo '<a href="'.URLROOT.'" class="button"><i class="icon-left-open"></i>Powrót</a>';
-    else if($second==0) echo '<a href="'.URLROOT.'/'.$first.'" class="button"><i class="icon-left-open"></i>Powrót</a>';
-    else echo '<a href="'.URLROOT.'/'.$first.'/'.$second.'" class="button"><i class="icon-left-open"></i>Powrót</a>'; 
+    if($first==0 && $second==0 && $third==0) echo '<a href="'.URLROOT.'" class="button"><i class="icon-left-open"></i>Powrót</a>';
+    else if($second==0 && $third==0) echo '<a href="'.URLROOT.'/'.$first.'" class="button"><i class="icon-left-open"></i>Powrót</a>';
+    else if ($third==0) echo '<a href="'.URLROOT.'/'.$first.'/'.$second.'" class="button"><i class="icon-left-open"></i>Powrót</a>';
+    else  echo '<a href="'.URLROOT.'/'.$first.'/'.$second.'/'.$third.'" class="button"><i class="icon-left-open"></i>Powrót</a>';
 }
 
 
