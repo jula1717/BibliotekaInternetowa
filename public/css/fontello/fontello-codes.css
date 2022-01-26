@@ -13,6 +13,11 @@
 .icon-left-open:before { content: '\e80b'; } /* '' */
 .icon-cog:before { content: '\e80c'; } /* '' */
 .icon-plus:before { content: '\e80d'; } /* '' */
+.icon-search:before { content: '\e80e'; } /* '' */
+.icon-eye:before { content: '\e80f'; } /* '' */
 .icon-trash-1:before { content: '\e83d'; } /* '' */
+.icon-angle-double-up:before { content: '\f102'; } /* '' */
+.icon-angle-double-down:before { content: '\f103'; } /* '' */
+.icon-info:before { content: '\f129'; } /* '' */
 .icon-user-plus:before { content: '\f234'; } /* '' */
 .icon-user-times:before { content: '\f235'; } /* '' */
