@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css??v=0.0.1" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css??v=0.0.1" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css??v=0.0.8" />
 </head>
 <?php returnRedirect("readers");?>
 <div id="borrowsTable">
@@ -50,7 +50,7 @@
 else
 {
 ?>
-<p>Nie znaleziono użytkowników</p>
+<p>Nie znaleziono wypożyczeń dla tego użytkownika</p>
 <?php
 }
 ?>

@@ -29,6 +29,7 @@ table th
 
 #borrowsTable
 {
+    clear:both;
     margin-top: 100px;
 	width: 770px;
     margin-left: auto;
@@ -176,11 +177,18 @@ table th
     clear: both;
 }
 
+#formContainer.wideForm
+{
+    width: 200px;
+}
+
 #formContainer.wfc
 {
     margin-top: 90px;
 }
 
+#publicationYear,
+#title,
 #workerAdd,
 #category,
 #publisher,
@@ -201,6 +209,15 @@ table th
     outline: none;
 }
 
+#title.wide,
+#category.wide,
+#publisher.wide,
+#authorFirstname.wide,
+#authorLastname.wide
+{
+    width: 200px;
+}
+
 #submit
 {
     width: 170px;
@@ -213,6 +230,11 @@ table th
     border-radius: 10px;
     cursor: pointer;
     letter-spacing: 2px
+}
+
+#submit.wide
+{
+    width: 200px;
 }
 
 #submit:hover

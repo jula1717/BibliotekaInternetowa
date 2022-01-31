@@ -17,10 +17,6 @@
         unset($_SESSION['errorDelete']);
     } ?>
 
-
-
-
-
     <?php if (count($authors) > 0) {
     ?>
         <table>
