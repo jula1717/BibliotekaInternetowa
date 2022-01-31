@@ -28,8 +28,8 @@
     if (isset($_SESSION['errorIncompleteRegisterData']))echo $_SESSION['errorIncompleteRegisterData'];
     if (isset($_SESSION['errorDataAlreadyExists']))echo $_SESSION['errorDataAlreadyExists'];
     ?>
-    Jeśli masz już założone konto<br>
-    <a href="<?php echo URLROOT."/login"?>">kliknij tutaj</a>
+    
+    <a href="<?php echo URLROOT."/login"?>">Jeśli masz już założone konto<br>kliknij tutaj</a>
 </div>    
     
 </body>

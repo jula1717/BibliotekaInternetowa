@@ -24,6 +24,5 @@
     if (isset($_SESSION['errorInvalidPassword']))echo $_SESSION['errorInvalidPassword'];
     ?>
      <br>
-    Jeśli nie masz jeszcze założonego konta<br>
-    <a href="<?php echo URLROOT."/register"?>">kliknij tutaj</a>
+    <a href="<?php echo URLROOT."/register"?>">Jeśli nie masz jeszcze założonego konta<br>kliknij tutaj</a>
 </div>
