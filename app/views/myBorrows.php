@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css??v=0.0.1" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css??v=0.0.1" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css??v=0.0.8" />
 </head>
 <?php returnRedirect("readerProfile");?>
 <div id="borrowsTable">
@@ -24,8 +24,9 @@
                     <td><?php echo $borrow->id_egzemplarza ?></td>
                     <td><?php echo $borrow->tytul ?></td>
                     <td><?php echo $borrow->data_wypozyczenia; ?></td>
-                    <td><?php if ($borrow->prolongowane==true) echo "Wykorzystano"; 
-                    else echo '<a id="pinkHref" href="'. URLROOT .'/readerProfile/prolongBook/?borrowId='.$borrow->id_wypozyczenia.'">Prolonguj</a>';?></td>
+                    <td><?php if ($borrow->prolongowane==true) echo "wykorzystano"; 
+                    else if ($borrow->data_oddania!=null) echo "-";
+                    else echo '<a id="pinkHref" href="'. URLROOT .'/readerProfile/prolongBook/?borrowId='.$borrow->id_wypozyczenia.'">prolonguj</a>';?></td>
                    <td><?php 
                     if($borrow->data_oddania==null)
                     {

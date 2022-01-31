@@ -6,18 +6,122 @@
             $this->db = new Database;
         }
 
-        public function createReader()
+        public function borrowCreate($id_uzytkownika,$id_egzemplarza)
         {
-            $query='INSERT INTO "Uzytkownicy" (email, haslo, telefon,typ_konta)
-            VALUES (:email, :password, :phone, :typ_konta);';
+            $query='INSERT INTO "Wypozyczenia" (id_czytelnika, id_egzemplarza,data_wypozyczenia)
+            VALUES (:id_uzytkownika, :id_egzemplarza,NOW());';
             $this->db->query($query);
-            $this->db->bind(':email',$_POST['email']);
-            $hashedPassword=password_hash($_POST['password'],PASSWORD_DEFAULT);
-            $this->db->bind(':password',$hashedPassword);
-            $this->db->bind(':phone',$_POST['phone']);
-            $this->db->bind(':typ_konta','czytelnik');
+            $this->db->bind(':id_uzytkownika',$id_uzytkownika);
+            $this->db->bind(':id_egzemplarza',$id_egzemplarza);
             $this->db->execute();
         }
+
+        public function addCopy($id_ksiazki,$rok_wydania)
+        {
+            $query='INSERT INTO "Egzemplarze" (id_ksiazki, rok_wydania)
+            VALUES (:id_ksiazki, :rok_wydania);';
+            $this->db->query($query);
+            $this->db->bind(':id_ksiazki',$id_ksiazki);
+            $this->db->bind(':rok_wydania',$rok_wydania);
+            $this->db->execute();
+        }
+
+        public function deleteBook($id_ksiazki)
+        {
+            $query='DELETE FROM "Ksiazki" WHERE id_ksiazki =:id_ksiazki;';
+            $this->db->query($query);
+            $this->db->bind(':id_ksiazki',$id_ksiazki);
+            $this->db->execute();
+        }
+
+        public function deleteCopy($id_egzemplarza)
+        {
+            $query='DELETE FROM "Egzemplarze" WHERE id_egzemplarza =:id_egzemplarza;';
+            $this->db->query($query);
+            $this->db->bind(':id_egzemplarza',$id_egzemplarza);
+            $this->db->execute();
+        }
+
+        public function borrowsOfCopy($id_egzemplarza)
+        {
+            $query='SELECT id_egzemplarza FROM "Wypozyczenia" WHERE id_egzemplarza=:id_egzemplarza;';
+            $this->db->query($query);
+            $this->db->bind(':id_egzemplarza',$id_egzemplarza);
+            $result=$this->db->resultSet();
+            return $result;
+        }
+
+        public function borrowsOfBook($id_ksiazki)
+        {
+            $query='SELECT "Ksiazki".id_ksiazki, "Ksiazki".tytul, "Egzemplarze".id_egzemplarza, "Wypozyczenia".id_wypozyczenia
+            FROM "Egzemplarze" 
+            INNER JOIN "Ksiazki" ON "Egzemplarze".id_ksiazki="Ksiazki".id_ksiazki
+            INNER JOIN "Wypozyczenia" ON "Egzemplarze".id_egzemplarza="Wypozyczenia".id_egzemplarza
+            WHERE "Ksiazki".id_ksiazki=:id_ksiazki';
+            $this->db->query($query);
+            $this->db->bind(':id_ksiazki',$id_ksiazki);
+            $result=$this->db->resultSet();
+            return $result;
+        }
+
+        public function getAllBooks()
+        {
+            $query='SELECT "Ksiazki".id_ksiazki, tytul, CONCAT("Autorzy".imie,\' \',"Autorzy".nazwisko) AS autor,"Kategorie".nazwa AS "kategoria", "Wydawnictwa".nazwa AS "wydawnictwo"
+            FROM "Ksiazki" 
+            INNER JOIN "Kategorie" ON "Ksiazki".id_kategorii="Kategorie".id_kategorii
+            INNER JOIN "Wydawnictwa" ON "Ksiazki".id_wydawnictwa="Wydawnictwa".id_wydawnictwa
+            INNER JOIN "Autorzy_ksiazek" on "Ksiazki".id_ksiazki="Autorzy_ksiazek".id_ksiazki
+            INNER JOIN "Autorzy" on "Autorzy".id_autora="Autorzy_ksiazek".id_autora;';
+            $this->db->query($query);
+            $result=$this->db->resultSet();
+            return $result;
+        }
+
+        public function getBookById($id_ksiazki)
+        {
+            $query='SELECT "Ksiazki".id_ksiazki, tytul, CONCAT("Autorzy".imie,\' \',"Autorzy".nazwisko) AS autor,"Kategorie".nazwa AS "kategoria", "Wydawnictwa".nazwa AS "wydawnictwo", "Ksiazki".opis AS "opis" FROM "Ksiazki"  
+            INNER JOIN "Kategorie" ON "Ksiazki".id_kategorii="Kategorie".id_kategorii
+            INNER JOIN "Wydawnictwa" ON "Ksiazki".id_wydawnictwa="Wydawnictwa".id_wydawnictwa
+            INNER JOIN "Autorzy_ksiazek" on "Ksiazki".id_ksiazki="Autorzy_ksiazek".id_ksiazki
+            INNER JOIN "Autorzy" on "Autorzy".id_autora="Autorzy_ksiazek".id_autora
+            WHERE "Ksiazki".id_ksiazki=:id_ksiazki;';
+            $this->db->query($query);
+            $this->db->bind(':id_ksiazki',$id_ksiazki);
+            $result=$this->db->single();
+            return $result;
+        }
+
+        public function getAllCopiesOfBook($id_ksiazki)
+        {
+            // $query='SELECT "Egzemplarze".id_egzemplarza,"Egzemplarze".dostepny,"Egzemplarze".rok_wydania , ("Wypozyczenia".data_wypozyczenia IS NOT NULL) AS wypozyczona
+            // FROM public."Egzemplarze"
+            // LEFT JOIN "Wypozyczenia" ON "Egzemplarze".id_egzemplarza="Wypozyczenia".id_egzemplarza
+            // WHERE "Egzemplarze".id_ksiazki=:id_ksiazki AND "Wypozyczenia".data_oddania IS NULL;';
+            $query='SELECT "Egzemplarze".id_egzemplarza,"Egzemplarze".dostepny,"Egzemplarze".rok_wydania ,
+            (SELECT COUNT("Wypozyczenia".id_wypozyczenia)
+            FROM "Wypozyczenia"
+            WHERE "Wypozyczenia".id_egzemplarza = "Egzemplarze".id_egzemplarza AND "Wypozyczenia".data_oddania IS NULL) AS "wypozyczona"
+            FROM public."Egzemplarze"
+            WHERE "Egzemplarze".id_ksiazki=:id_ksiazki';
+            $this->db->query($query);
+            $this->db->bind(':id_ksiazki',$id_ksiazki);
+            $result=$this->db->resultSet();
+            return $result;
+        }
+
+
+        // public function createReader()
+        // {
+        //     $query='INSERT INTO "Uzytkownicy" (email, haslo, telefon,typ_konta)
+        //     VALUES (:email, :password, :phone, :typ_konta);';
+        //     $this->db->query($query);
+        //     $this->db->bind(':email',$_POST['email']);
+        //     $hashedPassword=password_hash($_POST['password'],PASSWORD_DEFAULT);
+        //     $this->db->bind(':password',$hashedPassword);
+        //     $this->db->bind(':phone',$_POST['phone']);
+        //     $this->db->bind(':typ_konta','czytelnik');
+        //     $this->db->execute();
+        // }
 
         public function getReaderBorrows($readerId){
            

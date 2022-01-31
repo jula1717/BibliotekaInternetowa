@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=2" />
 </head>
 <div id="container">
-    <a class="tile" id="catalog" href="<?php echo URLROOT."/readers"?>">
+    <a class="tile" id="catalog" href="<?php echo URLROOT."/books"?>">
         <i class="icon-book"></i>
         <br>
         Katalog

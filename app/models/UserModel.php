@@ -36,8 +36,34 @@
 
         /*readers*/
 
+        public function getReaderLimit($id_uzytkownika)
+        {
+            $query='SELECT limit_ksiazek FROM public."Uzytkownicy" WHERE id_uzytkownika=:id_uzytkownika;';
+            $this->db->query($query);
+            $this->db->bind(':id_uzytkownika',$id_uzytkownika);
+            $result=$this->db->single();
+            return $result->limit_ksiazek;
+        }
+
+        public function getCountReaderUnreturnedBooks($id_czytelnika)
+        {
+            $query='SELECT (COUNT(*)-COUNT(data_oddania)) AS ilosc_wypozyczen FROM public."Wypozyczenia" WHERE id_czytelnika=:id_czytelnika;';
+            $this->db->query($query);
+            $this->db->bind(':id_czytelnika',$id_czytelnika);
+            $result=$this->db->single();
+            return $result->ilosc_wypozyczen    ;
+        }
+
         public function getAllReaders(){
             $query='SELECT * FROM "Uzytkownicy" WHERE typ_konta=\'czytelnik\'';
+            $this->db->query($query);
+            $result=$this->db->resultSet();
+            return $result;
+        }
+
+        public function getEmailsAllReaders(){
+            $query='SELECT id_uzytkownika, email FROM public."Uzytkownicy" WHERE typ_konta=\'czytelnik\'
+            ORDER BY email ASC ';
             $this->db->query($query);
             $result=$this->db->resultSet();
             return $result;

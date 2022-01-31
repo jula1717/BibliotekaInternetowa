@@ -13,7 +13,7 @@
         Wyloguj
     </a>
     <div style="clear: both;"></div>
-    <a class="tile" id="books" href="#">
+    <a class="tile" id="books" href="<?php echo URLROOT."/books"?>">
         <i class="icon-book"></i>
         <br>
         Książki
