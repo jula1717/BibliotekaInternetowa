@@ -36,6 +36,25 @@
 
         /*readers*/
 
+        public function changeLimit($id_uzytkownika,$nowy_limit_ksiazek)
+        {
+            $query='UPDATE "Uzytkownicy" SET limit_ksiazek = :nowy_limit_ksiazek WHERE id_uzytkownika=:id_uzytkownika;';
+            $this->db->query($query);
+            $this->db->bind(':id_uzytkownika',$id_uzytkownika);
+            $this->db->bind(':nowy_limit_ksiazek',$nowy_limit_ksiazek);
+            $this->db->execute();
+        }
+
+        public function countReadings($id_czytelnika)
+        {
+            $query='SELECT COUNT(data_oddania) AS ilosc_przeczytanych FROM public."Wypozyczenia" 
+            WHERE id_czytelnika=:id_czytelnika;';
+            $this->db->query($query);
+            $this->db->bind(':id_czytelnika',$id_czytelnika);
+            $result=$this->db->single();
+            return $result->ilosc_przeczytanych;
+        }
+
         public function getReaderLimit($id_uzytkownika)
         {
             $query='SELECT limit_ksiazek FROM public."Uzytkownicy" WHERE id_uzytkownika=:id_uzytkownika;';

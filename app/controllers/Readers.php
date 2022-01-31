@@ -21,8 +21,26 @@ class Readers extends Controller {
     public function returnBook()
     {
         $borrowId = $_GET['borrowId'];
+        $readerId = $_GET['readerId'];
         $this->BookModel->returnBook($borrowId);
-        header("Location: ".URLROOT."/readers/borrows/?readerId=".$_GET['readerId']);
+        $readingsAmount=$this->userModel->countReadings($readerId);
+        if($readingsAmount>=20)
+        {
+            $this->userModel->changeLimit($readerId,8);
+        }
+        else if($readingsAmount>=15)
+        {
+            $this->userModel->changeLimit($readerId,7);
+        }
+        else if($readingsAmount>=10)
+        {
+            $this->userModel->changeLimit($readerId,6);
+        }
+        else if($readingsAmount>=5)
+        {
+            $this->userModel->changeLimit($readerId,5);
+        }
+        header("Location: ".URLROOT."/readers/borrows/?readerId=".$readerId);
         exit();
     }
 }
