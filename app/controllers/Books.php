@@ -23,7 +23,17 @@ class Books extends Controller {
     {
         $categories=$this->bookModel->getCategories();
         $publishers=$this->bookModel->getPublishers();
-        $this->view('addBook',compact('categories','publishers'));
+        $authors=$this->bookModel->getAuthors();
+        $this->view('addBook',compact('authors','categories','publishers'));
+    }
+
+    public function editBook($id_ksiazki)
+    {
+        $categories=$this->bookModel->getCategories();
+        $publishers=$this->bookModel->getPublishers();
+        $authors=$this->bookModel->getAuthors();
+        $currentBook=$this->bookModel->getBookById($id_ksiazki);
+        $this->view('editBook',compact('authors','categories','publishers','currentBook'));
     }
 
     public function addCopy($id_ksiazki)
@@ -34,8 +44,37 @@ class Books extends Controller {
 
     public function BookAddFormHandler()
     {
-        //to do obsługa dodawania książki
-        $authors=$this->bookModel->getAuthors();
+        $authors=$_POST['author'];
+        $title = $_POST['title'];
+        $categoryId = $_POST['category'];
+        $publisherId = $_POST['publisher'];
+        $description = $_POST['description'];
+        
+
+        $this->bookModel->addBook($title,$categoryId,$publisherId,$description);
+        $lastAddedId=$this->bookModel->getLastAddedBookId();
+        foreach ($authors as $key => $authorId) {
+            $this->bookModel->createAuthorBookRelation($lastAddedId,$authorId);
+        }
+        header("Location: " . URLROOT . "/books");
+        exit();
+    }
+
+    public function BookEditFormHandler($id_ksiazki)
+    {
+        $authors=$_POST['author'];
+        $title = $_POST['title'];
+        $categoryId = $_POST['category'];
+        $publisherId = $_POST['publisher'];
+        $description = $_POST['description'];
+        
+        $this->bookModel->editBook($id_ksiazki,$title,$categoryId,$publisherId,$description);
+        $this->bookModel->deleteAuthorBookRelation($id_ksiazki);
+        foreach ($authors as $key => $authorId) {
+            $this->bookModel->createAuthorBookRelation($id_ksiazki,$authorId);
+        }
+        header("Location: " . URLROOT . "/books");
+        exit();
     }
 
     public function CopyAddFormHandler($id_ksiazki)
@@ -51,6 +90,7 @@ class Books extends Controller {
         if($result==NULL)
         {
             $this->bookModel->deleteBook($id_ksiazki);
+            $this->bookModel->deleteAuthorBookRelation($id_ksiazki);
         }
         else 
         {
