@@ -3,8 +3,8 @@
 </head>
 <?php returnRedirect("books"); ?>
 <div id="formContainer" class="wideForm">
-  <form action="<?php echo URLROOT . "/books/BookAddFormHandler" ?>" method="post">
-    <input type="text" class="wide" <?php if (isset($_SESSION['emptyTitle']) || isset($_SESSION['errorTitleInvalidData'])) echo "class='error'"; ?> id="title" name="title" placeholder="tytuł" minlength="1" maxlength="255" required>
+  <form action="<?php echo URLROOT . '/books/BookEditFormHandler/'.$currentBook->id_ksiazki ?>" method="post">
+    <input type="text" class="wide" <?php if (isset($_SESSION['emptyTitle']) || isset($_SESSION['errorTitleInvalidData'])) echo "class='error'"; ?> id="title" name="title" placeholder="tytuł" value="<?php echo $currentBook->tytul ?> "minlength="1" maxlength="255" required>
     <i class="icon-search help" title="Wprowadź tytuł utworu."></i>
     <br>
     <select id="author" name="author[]" multiple class="wide" required>
@@ -31,7 +31,11 @@
     </select>
     <i class="icon-search help" title="Wybierz odpowiednie wydawnictwo."></i>
     <br>
-    <textarea name="description" id="description" cols="30" rows="5" placeholder="opis" class="wide" ></textarea>
+    <textarea name="description" id="description" cols="30" rows="5" placeholder="opis" class="wide" >
+
+    <?php echo $currentBook->opis ?>
+
+    </textarea>
     <i class="icon-search help" title="Wprowadź opis utworu."></i>
     <br>
     <input type="submit" value="Dalej" id="submit" class="wide" >
