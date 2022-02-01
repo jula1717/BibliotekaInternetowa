@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css??v=0.0.1" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css??v=0.0.8" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=101" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css?v=101" />
 </head>
 <?php returnRedirect("readers");?>
 <div id="borrowsTable">

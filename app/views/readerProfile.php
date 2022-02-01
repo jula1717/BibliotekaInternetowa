@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=2" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=2" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=101" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css?v=101" />
 </head>
 <div id="container">
     <a class="tile" id="catalog" href="<?php echo URLROOT."/books"?>">
