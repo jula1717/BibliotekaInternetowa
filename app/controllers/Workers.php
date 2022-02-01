@@ -86,10 +86,20 @@ class Workers extends Controller
                         header("Location: " . URLROOT . "/workers/editWorker?workerId=" . $id_uzytkownika);
                         exit();
                     } else {
-                        $this->userModel->changeUser($_POST['email'], $_POST['phone'], $id_uzytkownika);
                         unset($_SESSION['errorDataAlreadyExists']);
-                        header("Location: " . URLROOT . "/workers");
-                        exit();
+                        $result=$this->userModel->getUserByEmail($_POST['email']);
+                        if($result !=null)
+                        {
+                            $_SESSION['errorSameEmail'] = "Podany email jest zajęty";
+                            header("Location: " . URLROOT . "/workers/editWorker?workerId=" . $id_uzytkownika);
+                            exit();
+                        }
+                        else
+                        {
+                            $this->userModel->changeUser($_POST['email'], $_POST['phone'], $id_uzytkownika);
+                            header("Location: " . URLROOT . "/workers");
+                            exit();
+                        }
                     }
                 }
             }

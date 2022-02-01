@@ -1,6 +1,7 @@
 <?php
 
-class ReaderProfile extends Controller {
+class ReaderProfile extends Controller
+{
     public function __construct()
     {
         readerAccessOnly();
@@ -12,9 +13,10 @@ class ReaderProfile extends Controller {
         $this->view('readerProfile');
     }
 
-    public function logout(){
+    public function logout()
+    {
         session_unset();
-        header("Location: ".URLROOT . "/login");
+        header("Location: " . URLROOT . "/login");
         exit();
     }
 
@@ -33,7 +35,7 @@ class ReaderProfile extends Controller {
     {
         $borrowId = $_GET['borrowId'];
         $this->bookModel->prolongBook($borrowId);
-        header("Location: ".URLROOT."/readerProfile/myBorrows");
+        header("Location: " . URLROOT . "/readerProfile/myBorrows");
         exit();
     }
 
@@ -51,20 +53,36 @@ class ReaderProfile extends Controller {
                     $_SESSION['errorWrongPhoneSize'] = "Proszę podać prawidłowy format i długość numeru telefonu(np.123456789)";
                 } else {
                     unset($_SESSION['errorWrongPhoneSize']);
-                    if ($_POST['email'] == $_SESSION['userData']->email && $_POST['phone'] == $_SESSION['userData']->telefon) {
-                        $_SESSION['errorDataAlreadyExists'] = "Nie dokonano żadnej zmiany";
-                        header("Location: " . URLROOT . "/readerProfile/changeData");
-                        exit();
+
+                    $result = $this->userModel->getUserByEmail($_SESSION['userData']->email);
+                    if ($result == null || !password_verify($_POST['oldPassword'], $result->haslo)) {
+                        $_SESSION['errorInvalidPassword'] = "Stare hasło jest nieprawidłowe!";
                     } else {
-                        $this->userModel->changeUser($_POST['email'], $_POST['phone'],$_SESSION['userData']->id_uzytkownika);
-                        $_SESSION['userData'] = $this->userModel->getUserById($_SESSION['userData']->id_uzytkownika);
-                        unset($_SESSION['errorDataAlreadyExists']);
-                        header("Location: " . URLROOT . "/readerProfile");
-                        exit();
+                        unset($_SESSION['errorInvalidPassword']);
+                        if ($_POST['email'] == $_SESSION['userData']->email && $_POST['phone'] == $_SESSION['userData']->telefon && $_POST['oldPassword'] == $_POST['newPassword']) {
+                            $_SESSION['errorDataAlreadyExists'] = "Nie dokonano żadnej zmiany";
+                            header("Location: " . URLROOT . "/readerProfile/changeData");
+                            exit();
+                        } else {
+                            unset($_SESSION['errorDataAlreadyExists']);
+                            $result = $this->userModel->getUserByEmail($_POST['email']);
+                            if ($result != null) {
+                                $_SESSION['errorSameEmail'] = "Podany email jest zajęty";
+                                header("Location: " . URLROOT . "/readerProfile/changeData");
+                                exit();
+                            } else {
+                                $this->userModel->changeUser($_POST['email'], $_POST['phone'], $_SESSION['userData']->id_uzytkownika, $_POST['newPassword']);
+                                $_SESSION['userData'] = $this->userModel->getUserById($_SESSION['userData']->id_uzytkownika);
+
+                                $_SESSION['savedData'] = "Dane zmieniono";
+                                header("Location: " . URLROOT . "/readerProfile/changeData");
+                                exit();
+                            }
+                        }
                     }
                 }
             }
         }
+        header("Location: " . URLROOT . "/readerProfile/changeData");
     }
 }
-?>
