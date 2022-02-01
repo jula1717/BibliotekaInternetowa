@@ -191,8 +191,11 @@ table th
 #title,
 #workerAdd,
 #category,
+#author,
+#password,
 #publisher,
 #authorFirstname,
+#description,
 #authorLastname
 {
     font-family: open sans;
@@ -209,7 +212,10 @@ table th
     outline: none;
 }
 
+
 #title.wide,
+#description.wide,
+#author.wide,
 #category.wide,
 #publisher.wide,
 #authorFirstname.wide,
@@ -297,4 +303,28 @@ i.icon-plus
 }
 .button.right{
     float: right;
+}
+
+#info
+{
+    background-color: #f48195;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px rgb(53 50 28 / 74%);
+    padding: 10px;
+    color: white;
+}
+
+.smallFont
+{
+    font-size: 12px;
+}
+
+#container + #formcontainer {
+    margin-top: 0px;
+}
+
+i.help {
+    position: absolute;
+    margin-top: 10px;
 }
