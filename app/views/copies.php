@@ -1,18 +1,21 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css??v=0.0.3" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css??v=0.0.1" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css??v=101" />
 </head>
 <?php returnRedirect("books"); ?>
-<a class="button right" href="<?php echo URLROOT . "/books/addCopy/".$book->id_ksiazki ?>">
-    <i class="icon-plus"></i>
-    Dodaj
-</a>
+<?php if($_SESSION['userData']->typ_konta=="administrator"||$_SESSION['userData']->typ_konta=="pracownik") 
+echo '<a class="button right" href="'.URLROOT.'/books/addCopy/'.$book->id_ksiazki.'"><i class="icon-plus"></i>Dodaj</a>';?>
+
+
 <div id="container">
 <?php if (isset($_SESSION['errorDelete'])) {
         echo $_SESSION['errorDelete'] . "<br>";
         unset($_SESSION['errorDelete']);
     } ?>
-    <?php echo $book->tytul.' '.$book->autor.' '.$book->kategoria.' '.$book->wydawnictwo.' '.$book->opis;
+    <div id="info" class="smallFont">
+    <?php 
+    echo '<h1>'. $book->tytul.'</h1> <b>Autor:</b> '.$book->autor.'</br><b>Kategoria:</b> '.$book->kategoria.'</br><b>Wydawnictwo:</b> '.$book->wydawnictwo.'<br><b>Opis:</b> '.nl2br($book->opis,false);
     ?>
+    </div>
     <?php if (count($copies) > 0) {
     ?>
         <table>
