@@ -6,6 +6,60 @@
             $this->db = new Database;
         }
 
+        public function addBook($tytul,$id_kategorii,$id_wydawnictwa,$opis)
+        {
+            $query='INSERT INTO "Ksiazki" (tytul, id_kategorii,id_wydawnictwa,opis)
+            VALUES (:tytul, :id_kategorii,:id_wydawnictwa,:opis);';
+            $this->db->query($query);
+            $this->db->bind(':tytul',$tytul);
+            $this->db->bind(':id_kategorii',$id_kategorii);
+            $this->db->bind(':id_wydawnictwa',$id_wydawnictwa);
+            $this->db->bind(':opis',$opis);
+            $this->db->execute();
+        }
+
+        public function editBook($id_ksiazki,$tytul,$id_kategorii,$id_wydawnictwa,$opis)
+        {
+            $query='UPDATE "Ksiazki" SET tytul=:tytul, id_kategorii=:id_kategorii,id_wydawnictwa=:id_wydawnictwa,opis=:opis
+            WHERE id_ksiazki =:id_ksiazki ;';
+            $this->db->query($query);
+            $this->db->bind(':tytul',$tytul);
+            $this->db->bind(':id_kategorii',$id_kategorii);
+            $this->db->bind(':id_wydawnictwa',$id_wydawnictwa);
+            $this->db->bind(':opis',$opis);
+            $this->db->bind(':id_ksiazki',$id_ksiazki);
+            $this->db->execute();
+        }
+
+        public function deleteAuthorBookRelation($id_ksiazki)
+        {
+            $query='DELETE FROM "Autorzy_ksiazek" WHERE id_ksiazki =:id_ksiazki;';
+            $this->db->query($query);
+            $this->db->bind(':id_ksiazki',$id_ksiazki);
+            $this->db->execute();
+        }
+
+        public function createAuthorBookRelation($id_ksiazki,$id_autora)
+        {
+            {
+                $query='INSERT INTO "Autorzy_ksiazek" (id_ksiazki, id_autora)
+                VALUES (:id_ksiazki,:id_autora);';
+                $this->db->query($query);
+                $this->db->bind(':id_ksiazki',$id_ksiazki);
+                $this->db->bind(':id_autora',$id_autora);
+                $this->db->execute();
+            }
+        }
+
+        public function getLastAddedBookId()
+        {
+            $query='SELECT id_ksiazki FROM public."Ksiazki"
+            ORDER BY id_ksiazki DESC LIMIT 1;';
+            $this->db->query($query);
+            $result=$this->db->single();
+            return $result->id_ksiazki;
+        }
+
         public function borrowCreate($id_uzytkownika,$id_egzemplarza)
         {
             $query='INSERT INTO "Wypozyczenia" (id_czytelnika, id_egzemplarza,data_wypozyczenia)
@@ -66,12 +120,12 @@
 
         public function getAllBooks()
         {
-            $query='SELECT "Ksiazki".id_ksiazki, tytul, CONCAT("Autorzy".imie,\' \',"Autorzy".nazwisko) AS autor,"Kategorie".nazwa AS "kategoria", "Wydawnictwa".nazwa AS "wydawnictwo"
-            FROM "Ksiazki" 
+            $query='SELECT "Ksiazki".id_ksiazki, tytul, string_agg(CONCAT("Autorzy".imie,\' \',"Autorzy".nazwisko),\',</br>\') AS autor,"Kategorie".nazwa AS "kategoria", "Wydawnictwa".nazwa AS "wydawnictwo", "Ksiazki".opis AS "opis" FROM "Ksiazki"  
             INNER JOIN "Kategorie" ON "Ksiazki".id_kategorii="Kategorie".id_kategorii
             INNER JOIN "Wydawnictwa" ON "Ksiazki".id_wydawnictwa="Wydawnictwa".id_wydawnictwa
             INNER JOIN "Autorzy_ksiazek" on "Ksiazki".id_ksiazki="Autorzy_ksiazek".id_ksiazki
-            INNER JOIN "Autorzy" on "Autorzy".id_autora="Autorzy_ksiazek".id_autora;';
+            INNER JOIN "Autorzy" on "Autorzy".id_autora="Autorzy_ksiazek".id_autora
+            GROUP BY "Ksiazki".id_ksiazki,tytul,kategoria,wydawnictwo,opis;';
             $this->db->query($query);
             $result=$this->db->resultSet();
             return $result;
@@ -79,17 +133,18 @@
 
         public function getBookById($id_ksiazki)
         {
-            $query='SELECT "Ksiazki".id_ksiazki, tytul, CONCAT("Autorzy".imie,\' \',"Autorzy".nazwisko) AS autor,"Kategorie".nazwa AS "kategoria", "Wydawnictwa".nazwa AS "wydawnictwo", "Ksiazki".opis AS "opis" FROM "Ksiazki"  
+            $query='SELECT "Ksiazki".id_ksiazki, tytul, string_agg(CONCAT("Autorzy".imie,\' \',"Autorzy".nazwisko),\',</br>\') AS autor,"Kategorie".nazwa AS "kategoria", "Wydawnictwa".nazwa AS "wydawnictwo", "Ksiazki".opis AS "opis" FROM "Ksiazki"  
             INNER JOIN "Kategorie" ON "Ksiazki".id_kategorii="Kategorie".id_kategorii
             INNER JOIN "Wydawnictwa" ON "Ksiazki".id_wydawnictwa="Wydawnictwa".id_wydawnictwa
             INNER JOIN "Autorzy_ksiazek" on "Ksiazki".id_ksiazki="Autorzy_ksiazek".id_ksiazki
-            INNER JOIN "Autorzy" on "Autorzy".id_autora="Autorzy_ksiazek".id_autora
-            WHERE "Ksiazki".id_ksiazki=:id_ksiazki;';
+            INNER JOIN "Autorzy" on "Autorzy".id_autora="Autorzy_ksiazek".id_autora WHERE "Ksiazki".id_ksiazki=:id_ksiazki GROUP BY "Ksiazki".id_ksiazki,tytul,kategoria,wydawnictwo,opis;';
             $this->db->query($query);
             $this->db->bind(':id_ksiazki',$id_ksiazki);
             $result=$this->db->single();
             return $result;
         }
+
+        
 
         public function getAllCopiesOfBook($id_ksiazki)
         {
@@ -166,7 +221,7 @@
 
         public function getCategories()
         {
-            $query='SELECT * FROM "Kategorie";';
+            $query='SELECT * FROM "Kategorie" ORDER BY id_kategorii DESC;';
             $this->db->query($query);
             $result=$this->db->resultSet();
             return $result;
