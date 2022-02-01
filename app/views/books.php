@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=99" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css??v=0.0.2" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=101" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css?v=101" />
 </head>
 <?php returnRedirect("workerProfile"); ?>
 <?php if($_SESSION['userData']->typ_konta=="administrator"||$_SESSION['userData']->typ_konta=="pracownik") 
@@ -33,9 +33,10 @@ echo '<a class="button right" href="'.URLROOT.'/books/addBook"><i class="icon-pl
                 foreach ($books as $index => $book) {
                 ?>
                     <tr>
+                        
                         <td><?php echo $index + 1; ?></td>
                         <td><?php echo $book->tytul; ?></td>
-                        <td><?php echo $book->autor; ?></td>
+                        <td><?php echo $book->autor?></td>
                         <td><?php echo $book->kategoria; ?></td>
                         <td><?php echo $book->wydawnictwo; ?></td>
                         <td>
@@ -44,7 +45,7 @@ echo '<a class="button right" href="'.URLROOT.'/books/addBook"><i class="icon-pl
                             </a>
                         </td>
                         <?php if($_SESSION['userData']->typ_konta=="administrator"||$_SESSION['userData']->typ_konta=="pracownik") 
-                           echo ' <td><a title="edytuj" href="'.URLROOT.'/books/EDIT/'.$book->id_ksiazki.'"><i class="icon-cog"></i></a></td>'?>
+                           echo ' <td><a title="edytuj" href="'.URLROOT.'/books/editBook/'.$book->id_ksiazki.'"><i class="icon-cog"></i></a></td>'?>
                         <?php if($_SESSION['userData']->typ_konta=="administrator"||$_SESSION['userData']->typ_konta=="pracownik") 
                            echo ' <td><a title="usuń" href="'.URLROOT.'/books/deleteBook/'.$book->id_ksiazki.'"><i class="icon-trash-1"></i></a></td>'?>
                     </tr>
