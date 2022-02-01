@@ -1,12 +1,14 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=2" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=4" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=101" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css?v=101" />
 </head>
 <?php returnRedirect("publishers");?>
 <div id ="formContainer">
 
-    <form action="<?php echo URLROOT.'/publishers/publisherFormHandler/edycja/'. $nazwa?>" method="post">
+    <form action="<?php echo URLROOT.'/publishers/publisherFormHandler/edycja/';?>" method="post">
 
-        <input type="text" id="publisher" name="publisher" placeholder="Nazwa wydawnictwa" pattern="[A-Za-z.,-]+" value=<?php echo $nazwa?> minlength="1" maxlength="255" required>
+    <input type="hidden" name="old_publisher" value="<?php echo $nazwa;?>">
+        <input type="text" id="publisher" name="publisher" placeholder="Nazwa wydawnictwa" pattern="^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+((( |, |-)[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+){0,255})" value=<?php echo $nazwa?> minlength="1" maxlength="255" required>
+        <i class="icon-search help" title="Wprowadź nazwę wydawnictwa."></i>
         <?php
         if (isset($_SESSION['errorEmptyField']))
         {
