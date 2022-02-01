@@ -24,8 +24,12 @@ class Authors extends Controller {
         $this->view('editAuthor',compact('imie','nazwisko','id_autora'));
     }
 
-    public function authorFormHandler($tryb,$stareImie=0,$stareNazwisko=0,$id_autora=0)
+    public function authorFormHandler($tryb,$id_autora=0)
     {
+        
+        $stareImie=$_POST['old_authorFirstname'];
+        $stareNazwisko=$_POST['old_authorLastname'];
+
         if (!isset($_POST['authorFirstname'])||!isset($_POST['authorLastname'])) $_SESSION['errorEmptyField'] = "Uzupełnij dane!";
         else {
             if (strlen($_POST['authorFirstname']) < 1 || strlen($_POST['authorFirstname']) > 255) {

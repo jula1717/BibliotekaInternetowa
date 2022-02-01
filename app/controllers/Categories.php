@@ -22,8 +22,9 @@ class Categories extends Controller {
         $this->view('editCategory',compact('nazwa'));
     }
 
-    public function categoryFormHandler($tryb,$staraNazwa=0)
+    public function categoryFormHandler($tryb)
     {
+        $staraNazwa=$_POST['staraNazwa'];
         if (!isset($_POST['category'])) $_SESSION['errorEmptyField'] = "Uzupełnij dane!";
         else {
             unset($_SESSION['errorEmptyField']);
