@@ -1,11 +1,12 @@
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=2" />
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/workerProfile.css?v=4" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontello/fontello.css?v=101" />
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css?v=101" />
 </head>
 <?php returnRedirect("publishers");?>
 <div id ="formContainer">
     <form action="<?php echo URLROOT."/publishers/publisherFormHandler/dodanie"?>" method="post">
 
-        <input type="text" id="publisher" name="publisher" placeholder="Nazwa wydawnictwa" pattern="[A-Za-z.,-]+" minlength="1" maxlength="255" required>
+        <input type="text" id="publisher" name="publisher" placeholder="Nazwa wydawnictwa" pattern="^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+((( |, |-)[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+){0,255})" minlength="1" maxlength="255" required>
+        <i class="icon-search help" title="Wprowadź nazwę wydawnictwa."></i>
         <?php
         if (isset($_SESSION['errorEmptyField']))
         {
