@@ -328,3 +328,9 @@ i.help {
     position: absolute;
     margin-top: 10px;
 }
+input.wide{
+    width:100%;
+}
+.flex-two{
+    display: flex;
+}

@@ -133,7 +133,8 @@
 
         public function getBookById($id_ksiazki)
         {
-            $query='SELECT "Ksiazki".id_ksiazki, tytul, string_agg(CONCAT("Autorzy".imie,\' \',"Autorzy".nazwisko),\',</br>\') AS autor,"Kategorie".nazwa AS "kategoria", "Wydawnictwa".nazwa AS "wydawnictwo", "Ksiazki".opis AS "opis" FROM "Ksiazki"  
+            $query='SELECT "Ksiazki".id_ksiazki, tytul, string_agg(CONCAT("Autorzy".imie,\' \',"Autorzy".nazwisko),\',</br>\') AS autor,
+            array_to_json(array_agg("Autorzy".id_autora)) AS autorids, "Kategorie".nazwa AS "kategoria", "Wydawnictwa".nazwa AS "wydawnictwo", "Ksiazki".opis AS "opis" FROM "Ksiazki"  
             INNER JOIN "Kategorie" ON "Ksiazki".id_kategorii="Kategorie".id_kategorii
             INNER JOIN "Wydawnictwa" ON "Ksiazki".id_wydawnictwa="Wydawnictwa".id_wydawnictwa
             INNER JOIN "Autorzy_ksiazek" on "Ksiazki".id_ksiazki="Autorzy_ksiazek".id_ksiazki
@@ -141,6 +142,7 @@
             $this->db->query($query);
             $this->db->bind(':id_ksiazki',$id_ksiazki);
             $result=$this->db->single();
+            $result->autorids=json_decode($result->autorids);
             return $result;
         }
 
@@ -164,19 +166,6 @@
             return $result;
         }
 
-
-        // public function createReader()
-        // {
-        //     $query='INSERT INTO "Uzytkownicy" (email, haslo, telefon,typ_konta)
-        //     VALUES (:email, :password, :phone, :typ_konta);';
-        //     $this->db->query($query);
-        //     $this->db->bind(':email',$_POST['email']);
-        //     $hashedPassword=password_hash($_POST['password'],PASSWORD_DEFAULT);
-        //     $this->db->bind(':password',$hashedPassword);
-        //     $this->db->bind(':phone',$_POST['phone']);
-        //     $this->db->bind(':typ_konta','czytelnik');
-        //     $this->db->execute();
-        // }
 
         public function getReaderBorrows($readerId){
            

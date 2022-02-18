@@ -13,7 +13,43 @@ echo '<a class="button right" href="'.URLROOT.'/books/addBook"><i class="icon-pl
 
     <?php if (count($books) > 0) {
     ?>
-        <table>
+    <div class="flex-two">
+    <input type="text" class="wide" id="booksearch" name="booksearch" placeholder="wyszukaj">
+    <input type="submit" value="Wyszukaj" onclick="wyszukaj()">
+<script>
+    function wyszukaj() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("booksearch");
+  filter = input.value.toUpperCase();
+  table = document.querySelector("#book-catalog tbody");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+console.log(tr[i].innerText);
+txtValue = tr[i].textContent || tr[i].innerText;
+txtValue = txtValue.replace(/[\s]+/g, ' ').toUpperCase();
+
+var filterA = filter.split(' ');
+console.log(filterA);
+tr[i].style.display = "";//pokaz
+for(j=0;j<filterA.length;j++)
+{
+console.log(txtValue);
+if (txtValue.indexOf(filterA[j]) > -1) {
+        //tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+
+  }
+}
+}
+</script>
+
+    </div>
+       <table id="book-catalog">
             <thead>
                 <th>lp.</th>
                 <th>tytuł</th>

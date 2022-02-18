@@ -8,8 +8,13 @@
     <i class="icon-search help" title="Wprowadź tytuł utworu."></i>
     <br>
     <select id="author" name="author[]" multiple class="wide" required>
-      <?php foreach ($authors as $key => $author) {
-        echo '<option value="' . $author->id_autora. '">' . $author->imie.' '.$author->nazwisko.'</option>';
+      <?php
+      
+      foreach ($authors as $key => $author) {
+        echo '<option value="' . $author->id_autora. '"';
+        if(in_array($author->id_autora,$currentBook->autorids))
+        echo ' selected="selected" ';
+        echo '>' . $author->imie.' '.$author->nazwisko.'</option>';
       }
       ?>
     </select>
