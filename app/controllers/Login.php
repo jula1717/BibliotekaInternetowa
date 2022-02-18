@@ -34,16 +34,24 @@ class Login extends Controller
                         $_SESSION['errorInvalidPassword'] = "Podane dane nie zgadzają się!";
                     } else {
                         unset($_SESSION['errorInvalidPassword']);
-                        $_SESSION['userData'] = $result;
-                        if($_SESSION['userData']->typ_konta=="pracownik"||$_SESSION['userData']->typ_konta=="administrator")
+                        if($result->status=="zablokowany")
                         {
-                            header("Location: " . URLROOT . "/workerProfile");
-                            exit();
+                            $_SESSION['errorInvalidAccess'] = "Uzytkownik zablokowany!";
                         }
-                        else if ($_SESSION['userData']->typ_konta=="czytelnik")
+                        else
                         {
-                            header("Location: " . URLROOT . "/readerProfile");
-                            exit();
+                            unset($_SESSION['errorInvalidAccess']);
+                            $_SESSION['userData'] = $result;
+                            if($_SESSION['userData']->typ_konta=="pracownik"||$_SESSION['userData']->typ_konta=="administrator")
+                            {
+                                header("Location: " . URLROOT . "/workerProfile");
+                                exit();
+                            }
+                            else if ($_SESSION['userData']->typ_konta=="czytelnik")
+                            {
+                                header("Location: " . URLROOT . "/readerProfile");
+                                exit();
+                            }
                         }
                     }
                 }
