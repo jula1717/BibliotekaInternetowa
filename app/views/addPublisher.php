@@ -21,7 +21,7 @@
         if (isset($_SESSION['errorSamePublisher']))
         {
             echo $_SESSION['errorSamePublisher'];
-            unset($_SESSION['errorInvalidData']);
+            unset($_SESSION['errorSamePublisher']);
         }
         ?>
         <br>

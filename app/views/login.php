@@ -26,6 +26,7 @@
     <?php
     if (isset($_SESSION['errorIncompleteLoginData']))echo $_SESSION['errorIncompleteLoginData'];
     if (isset($_SESSION['errorInvalidPassword']))echo $_SESSION['errorInvalidPassword'];
+    if (isset($_SESSION['errorInvalidAccess']))echo $_SESSION['errorInvalidAccess'];
     ?>
      <br>
     <a href="<?php echo URLROOT."/register"?>">Jeśli nie masz jeszcze założonego konta<br>kliknij tutaj</a>

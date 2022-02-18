@@ -14,7 +14,7 @@
     <div id="formcontainer" class="wfc">
 
         <form action="<?php echo URLROOT . '/readerProfile/FormHandler' ?>" method="post">
-            <input type="email" <?php if (isset($_SESSION['errorIncompleteRegisterData']) || isset($_SESSION['errorDataAlreadyExists'])) echo "class='error'"; ?> id="workerAdd" name="email" placeholder="E-mail" value=<?php echo $_SESSION['userData']->email; ?> pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" maxlength="255" required>
+            <input type="email" <?php if (isset($_SESSION['errorIncompleteRegisterData']) || isset($_SESSION['errorDataAlreadyExists'])) echo "class='error'"; ?> id="workerAdd" name="email" placeholder="E-mail" value="<?php echo $_SESSION['userData']->email; ?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" maxlength="255" required>
             <i class="icon-search help" title="Wprowadź email."></i>
             <?php
             if (isset($_SESSION['errorWrongEmailSize'])) echo $_SESSION['errorWrongEmailSize'];
