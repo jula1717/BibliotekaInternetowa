@@ -26,9 +26,11 @@ class Authors extends Controller {
 
     public function authorFormHandler($tryb,$id_autora=0)
     {
-        
-        $stareImie=$_POST['old_authorFirstname'];
-        $stareNazwisko=$_POST['old_authorLastname'];
+        if($tryb=="edycja")
+        {
+            $stareImie=$_POST['old_authorFirstname'];
+            $stareNazwisko=$_POST['old_authorLastname'];
+        }
 
         if (!isset($_POST['authorFirstname'])||!isset($_POST['authorLastname'])) $_SESSION['errorEmptyField'] = "Uzupełnij dane!";
         else {

@@ -26,7 +26,10 @@ class Publishers extends Controller
 
     public function publisherFormHandler($tryb)
     {
-        $staraNazwa = $_POST['old_publisher'];
+        if($tryb=="edycja")
+        {
+            $staraNazwa = $_POST['old_publisher'];
+        }
         if (!isset($_POST['publisher'])) $_SESSION['errorEmptyField'] = "Uzupełnij dane!";
         else {
             if (strlen($_POST['publisher']) < 1 || strlen($_POST['publisher']) > 255) {
